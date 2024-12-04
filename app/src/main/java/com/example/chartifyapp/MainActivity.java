@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
     private Button sendButton;
     private OkHttpClient client;
 
-    private static final String GEMINI_API_URL = "AIzaSyAD0IvrITNf3hNOIMwypFhFF6wLHDCpnic";
+    private static final String GEMINI_API_URL = "APIKEY";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
