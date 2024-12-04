@@ -4,9 +4,11 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -30,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
     private Button sendButton;
     private OkHttpClient client;
 
-    private static final String GEMINI_API_URL = "Your_apiKEY";
+    private static final String GEMINI_API_URL = "AIzaSyAD0IvrITNf3hNOIMwypFhFF6wLHDCpnic";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +58,11 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    private void startChatWithCharacter(String characterName) {
+        addChatBubble("Memulai percakapan dengan: " + characterName, false);
+        fetchChatbotResponse("Hai, saya ingin berbicara dengan " + characterName);
+    }
+
     private void addChatBubble(String message, boolean isUser) {
         TextView chatBubble = new TextView(this);
         chatBubble.setText(message);
@@ -78,7 +85,7 @@ public class MainActivity extends AppCompatActivity {
     private void fetchChatbotResponse(String userMessage) {
         JSONObject jsonBody = new JSONObject();
         try {
-            jsonBody.put("prompt",  userMessage);
+            jsonBody.put("prompt", userMessage);
         } catch (JSONException e) {
             e.printStackTrace();
         }
